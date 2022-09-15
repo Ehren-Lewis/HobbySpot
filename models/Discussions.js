@@ -1,7 +1,6 @@
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
-const Hobbies = require("./Hobbies.js");
-const Users = require("./Users");
+const User = require("./User");
 class Discussions extends Model {}
 
 
@@ -14,10 +13,10 @@ Discussions.init({
     },
     hobby_topic: {
         allowNull: false,
-        references: {
-            model: Hobbies,
-            // on hobby name
-        }
+        // references: {
+        //     model: Hobbies,
+        //     // on hobby name
+        // }
     },
     discussion_title: {
         type: DataTypes.STRING,
@@ -26,10 +25,10 @@ Discussions.init({
     userName: {
         type: DataTypes.STRING,
         allowNull: false,
-        references: {
-            model: Users
-            // on username
-        }
+        // references: {
+        //     model: Users
+        //     // on username
+        // }
     },
     text_field: {
         type: DataTypes.STRING
