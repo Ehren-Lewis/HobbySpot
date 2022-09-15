@@ -1,45 +1,41 @@
-const { Model, DataTypes } = require('sequelize');
-const sequelize = require('../config/connection');
-const Hobbies = require("./Hobbies.js");
-const Users = require("./Users");
+const { Model, DataTypes } = require("sequelize");
+const sequelize = require("../config/connection");
+// const Hobbies = require("./Hobbies.js");
+// const Users = require("./User");
+
 class Discussions extends Model {}
 
-
-Discussions.init({
-
+Discussions.init(
+  {
     id: {
-        type: DataTypes.INTEGER,
-        autoIncrement: true,
-        primaryKey: true
+      type: DataTypes.INTEGER,
+      autoIncrement: true,
+      primaryKey: true,
     },
     hobby_topic: {
-        allowNull: false,
-        references: {
-            model: Hobbies,
-            // on hobby name
-        }
+      type: DataTypes.STRING,
+      allowNull: false,
+      // references: {
+      //   model: Hobbies,
+      // on hobby name
+      // },
     },
     discussion_title: {
-        type: DataTypes.STRING,
-        allowNull: false
+      type: DataTypes.STRING,
+      allowNull: false,
     },
-    userName: {
-        type: DataTypes.STRING,
-        allowNull: false,
-        references: {
-            model: Users
-            // on username
-        }
-    },
+   
     text_field: {
-        type: DataTypes.STRING
+      type: DataTypes.STRING,
     },
-    timestamp: {
-        //timestamp somehow
-    }
-
-
-});
-
+  },
+  {
+    sequelize,
+    timestamps: true,
+    freezeTableName: true,
+    underscored: true,
+    
+  }
+);
 
 module.exports = Discussions;
