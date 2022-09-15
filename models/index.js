@@ -1,9 +1,15 @@
-const Users = require("./Users");
-const Discussions = require("./Discussions");
-const Hobbies = require("./Hobbies");
-const UserPreferences = require("./UserPreferences");
+// import models
 
-// create all associations
+const Category = require("./Category");
+const User = require("./User");
+const UserCategory = require("./UserCategory");
 
+Category.belongsToMany(User, { through: UserCategory });
 
-module.exports = { Users, Discussions, Hobbies, UserPreferences}
+User.belongsToMany(Category, { through: UserCategory });
+
+module.exports = {
+  Category,
+  User,
+  UserCategory,
+};
