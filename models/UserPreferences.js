@@ -1,5 +1,13 @@
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
 
-class holder extends Model {}
+class UserPreferences extends Model {}
 
+
+// UserPreferences.init({
+
+//     preferences
+// })
+
+
+module.exports = UserPreferences;

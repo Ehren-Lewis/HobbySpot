@@ -6,8 +6,19 @@ const sequelize = require('../config/connection');
 class Hobbies extends Model {}
 
 
-
-
+Hobbies.init({
+    id: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+        primaryKey: true,
+        autoIncrement: true,
+      },
+    
+      hobby_name: {
+        type: DataTypes.STRING,
+        allowNull: false
+      }
+})
 
 // Hobbies.hasMany(Discussion);
 
@@ -24,3 +35,5 @@ class Hobbies extends Model {}
 
 //     `SELET * FROM discussions WHERE hobby_topic = ${finder}`
 // })
+
+module.exports = Hobbies;
