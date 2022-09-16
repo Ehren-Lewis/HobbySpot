@@ -9,12 +9,18 @@ const app = express();
 const PORT = process.env.PORT || 3001;
 app.use(routes);
 
+app.use(express.static(path.join(__dirname, 'public')));
+
+//handlebars routing
 app.engine('handlebars', exphbs.engine({
   defaultLayout: 'main',
   extname: '.handlebars',
 }));
 app.set('view engine', 'handlebars');
 
+//cookies setup
+
+// const SequelizeStore = require("connect-session-sequelize")(session.Store);
 
 
 // sync sequelize models to the database, then turn on the server
