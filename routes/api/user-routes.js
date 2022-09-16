@@ -16,10 +16,28 @@ router.get("/", async (req, res) => {
   }
 });
 
-// router.get("/:id", async (req, res) => {
-//   const userById = await User.findByPk(req.params.id);
-//   return res.json(userById);
-// });
+router.get("/:id", async (req, res) => {
+  const userById = await User.findByPk(req.params.id, {
+    // include: [{ model: Product }],
+  });
+  return res.json(userById);
+});
+
+
+router.put("/:id", async (req, res) => {
+ 
+  try {
+    const userUpdate = await User.update(req.body, {
+      where: {
+        id: req.params.id,
+      },
+    });
+    if (!userUpdate) {
+      res.status(404).json({ message: "user not found" });
+      return;
+    }
+    res.status(200).json(userUpdate);
+  } catch (err) {
 
 router.post('/', async (req, res) => {
   try {
@@ -78,10 +96,21 @@ router.post('/login', async (req, res) => {
     });
   } catch (err) {
     console.log(err);
+
     res.status(500).json(err);
   }
 });
 
 
+router.delete("/:id", async (req, res) => {
+  const userDelete = await User.destroy({
+    where: {
+      id: req.params.id,
+    },
+  });
+
+  return res.json(userDelete);
+  // delete on tag by its `id` value
+});
 
 module.exports = router;
