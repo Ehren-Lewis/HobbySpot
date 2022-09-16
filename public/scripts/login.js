@@ -1,0 +1,3 @@
+
+const signUp = $(".");
+const logIn = $(".");

@@ -12,6 +12,7 @@ Discussions.init({
         primaryKey: true
     },
     hobby_topic: {
+        type: DataTypes.STRING,
         allowNull: false,
         // references: {
         //     model: Hobbies,
@@ -33,12 +34,13 @@ Discussions.init({
     text_field: {
         type: DataTypes.STRING
     },
-    timestamp: {
-        //timestamp somehow
-    }
-
-
-});
+}, {
+    sequelize,
+    timestamps: true,
+    freezeTableName: true,
+    underscored: true,
+  }
+);
 
 
 module.exports = Discussions;
