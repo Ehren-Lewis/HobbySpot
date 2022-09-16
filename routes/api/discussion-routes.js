@@ -4,7 +4,9 @@ const { Discussions, Category, User, UserCategory } = require("../../models");
 //----------endpoint = api/discussions  ------this route finds all discussions-----
 router.get("/", async (req, res) => {
   try {
-    const discussionData = await Discussions.findAll({});
+    const discussionData = await Discussions.findAll({
+      include: [{model: User}]
+    });
     if (!discussionData) {
       res.status(404).json({ message: "discussion not found" });
       return;

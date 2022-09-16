@@ -37,7 +37,8 @@ router.put("/:id", async (req, res) => {
       return;
     }
     res.status(200).json(userUpdate);
-  } catch (err) {
+  } catch (err) {}
+});
 
 router.post('/', async (req, res) => {
   try {
