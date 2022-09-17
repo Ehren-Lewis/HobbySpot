@@ -1,4 +1,3 @@
-
 $(document).ready( () => {
 
     const signupButton = $(".signup-toggle");
@@ -31,7 +30,19 @@ $(document).ready( () => {
         console.log("login hit");
     })
 
-})
+        // $( function() {
+        //     var availableTags = [
+        
+        //     ];
+        //     $( ".autocomplete" ).autocomplete({
+        //       source: availableTags
+        //     });
+        //   } );
+
+    })
+
+
+
 
 
 // const handleLogin = (info) => {
