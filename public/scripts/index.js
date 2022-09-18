@@ -1,48 +1,34 @@
-const { DatabaseError } = require("sequelize");
+$(document).ready( () => {
 
-const discussionsContainer = $(".discussions");
+    const addButton = $(".add-button");
+    const addForm = $(".add-discussion-form");
+    const disucssionHandler = $(".discussion-handler")
 
-
-const getDiscussions = async () => {
-    const response = await fetch("./", {
-        method: "GET"
-    });
-}
-
-// getDiscussions().then(data => {
-//     for (let i = 0; i < data.length; i++) {
-//         const currentUser = data[i].userName;
-//         const hobbyTopic = data[i].hobby_topic;
-//         const discussionTimeStamp = data[i].time_stamp;
-//         const discussionTitle = data[i].discussion_title;
-//         const discussionText = data[i].text_field;
-//     }
-// })
-
-// hobby_topic: {
-//     allowNull: false,
-//     references: {
-//         model: Hobbies,
-//         // on hobby name
-//     }
-// },
-// discussion_title: {
-//     type: DataTypes.STRING,
-//     allowNull: false
-// },
-// userName: {
-//     type: DataTypes.STRING,
-//     allowNull: false,
-//     references: {
-//         model: Users
-//         // on username
-//     }
-// },
-// text_field: {
-//     type: DataTypes.STRING
-// },
-// timestamp: {
-//     //timestamp somehow
-// }
+    addButton.click( () => {
+        addButton.text("Cancel");
+        // I don't know if this is desired functionality
+        //This cannot really be added onto unil we establish cookies
+        //
+        if (addForm.is(":visible")) {
+            addButton.text("Add Discussion")
+            $("#hobby").val("");
+            $("#title").val("");
+            $("#discussion").val("");
+        }
+        addForm.toggle();
+    })
 
 
+    addForm.submit( (e) => {
+        e.preventDefault();
+        if ( $("#hobby").val() == "" || $("#title").val() == "" || $("#discussion").val() == "") {
+        disucssionHandler.empty();
+        disucssionHandler.append(`<p class='text-center text-danger'>No field can be blank</p>'`);
+        }
+
+    })
+
+    // addForm.
+
+
+})
