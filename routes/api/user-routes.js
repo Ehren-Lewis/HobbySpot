@@ -10,9 +10,9 @@ router.get("/", async (req, res) => {
       res.status(404).json({ message: "users not found" });
       return;
     }
-    res.status(200).json(userData);
+    res.status(200)
   } catch (err) {
-    res.status(500).json(err);
+    res.status(500)
   }
 });
 
@@ -41,6 +41,7 @@ router.put("/:id", async (req, res) => {
 });
 
 router.post('/', async (req, res) => {
+  console.log(req);
   try {
     const dbUserData = await User.create({
       username: req.body.username,
@@ -48,14 +49,14 @@ router.post('/', async (req, res) => {
       password: req.body.password,
     });
 
-    req.session.save(() => {
-      req.session.loggedIn = true;
+    // req.session.save(() => {
+    //   req.session.loggedIn = true;
+        // });
 
-      res.status(200).json(dbUserData);
-    });
+      res.json({status: 200});
   } catch (err) {
-    console.log(err);
-    res.status(500).json(err);
+    // console.log(err);
+    res.json({status: 500});
   }
 });
 
@@ -69,32 +70,27 @@ router.post('/login', async (req, res) => {
     });
 
     if (!dbUserData) {
-      res
-        .status(400)
-        .json({ message: 'Incorrect email or password. Please try again!' });
+      res.status(400).json({ message: 'Incorrect email or password. Please try again!' });
       return;
     }
+
 
     const validPassword = await dbUserData.checkPassword(req.body.password);
 
     if (!validPassword) {
-      res
-        .status(400)
-        .json({ message: 'Incorrect email or password. Please try again!' });
+      res.json({ message: 'Incorrect email or password. Please try again!', status: 400 });
       return;
     }
 
-    req.session.save(() => {
-      req.session.loggedIn = true;
-      console.log(
-        '🚀 ~ file: user-routes.js ~ line 57 ~ req.session.save ~ req.session.cookie',
-        req.session.cookie
-      );
+    // req.session.save(() => {
+    //   req.session.loggedIn = true;
+    //   console.log(
+    //     '🚀 ~ file: user-routes.js ~ line 57 ~ req.session.save ~ req.session.cookie',
+    //     req.session.cookie
+    //   );
 
-      res
-        .status(200)
-        .json({ user: dbUserData, message: 'You are now logged in!' });
-    });
+      res.json({message: 'You are now logged in!', status: 200 });
+    // });
   } catch (err) {
     console.log(err);
 
@@ -114,4 +110,10 @@ router.delete("/:id", async (req, res) => {
   // delete on tag by its `id` value
 });
 
+
+// router.delete("/logout", async (req, res) => {
+
+// })
+
 module.exports = router;
+

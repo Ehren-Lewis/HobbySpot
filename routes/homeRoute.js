@@ -14,9 +14,8 @@ router.get("/", async (req, res, next) => {
 // create map method 
 // get {plain : true} 
 
+        
         const newData = discussionData.map( ele => ele.get({plain: true}))
-
-        console.log(newData);
         if (!discussionData) {
         // res.status(404).json({ message: "discussion not found" });
         // return;
