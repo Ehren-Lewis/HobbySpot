@@ -2,15 +2,32 @@ const express = require("express");
 const exphbs = require("express-handlebars");
 const routes = require("./routes");
 const path = require("path");
-const expressSession = require("express-session");
-
-// import sequelize connection
-const sequelize = require("./config/connection.js")
+const sessions = require("express-session");
+const dotenv = require("dotenv").config();
+const SequelizeStore = require('connect-session-sequelize')(sessions.Store);
+const sequelize = require("./config/connection.js");
 const app = express();
 const PORT = process.env.PORT || 3001;
 
-// app.use(express.json());
-// app.use(express.urlencoded());
+const sess = {
+  secret: "something",
+  resave: false,
+  saveUninitialized: true,
+  cookie: {
+    maxAge: 1000 * 60 * 60 *24
+  },
+  store: new SequelizeStore({
+    db: sequelize
+  })
+}
+
+
+app.use(sessions(sess))
+
+// import sequelize connection
+// const { Session } = require("inspector");
+
+
 app.use(express.urlencoded({extended: true})); 
 app.use(express.json());   
 app.use(routes);
@@ -29,6 +46,7 @@ app.engine('handlebars', exphbs.engine({
   }
 }));
 app.set('view engine', 'handlebars');
+
 
 //cookies setup
 

@@ -49,9 +49,10 @@ router.post('/', async (req, res) => {
       password: req.body.password,
     });
 
-    // req.session.save(() => {
-    //   req.session.loggedIn = true;
-        // });
+    req.session.save(() => {
+      req.session.loggedIn = true;
+      req.session.username = req.body.username;
+        });
 
       res.json({status: 200});
   } catch (err) {
@@ -82,15 +83,20 @@ router.post('/login', async (req, res) => {
       return;
     }
 
-    // req.session.save(() => {
-    //   req.session.loggedIn = true;
-    //   console.log(
-    //     '🚀 ~ file: user-routes.js ~ line 57 ~ req.session.save ~ req.session.cookie',
-    //     req.session.cookie
-    //   );
+    req.session.save(() => {
+      req.session.loggedIn = true;
+      req.session.email = req.body.email;
+      req.session.username = dbUserData.username;
+      console.log(
+        '🚀 ~ file: user-routes.js ~ line 57 ~ req.session.save ~ req.session.cookie',
+
+      );
+
 
       res.json({message: 'You are now logged in!', status: 200 });
-    // });
+
+    });
+
   } catch (err) {
     console.log(err);
 
@@ -111,9 +117,12 @@ router.delete("/:id", async (req, res) => {
 });
 
 
-// router.delete("/logout", async (req, res) => {
+router.delete("/logout", async (req, res) => {
+  req.session.destroy( () => {
 
-// })
+  res.redirect('/');
+  });
+})
 
 module.exports = router;
 

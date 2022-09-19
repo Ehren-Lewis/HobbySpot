@@ -24,6 +24,8 @@ $(document).ready( () => {
         if ( $("#hobby").val() == "" || $("#title").val() == "" || $("#discussion").val() == "") {
         disucssionHandler.empty();
         disucssionHandler.append(`<p class='text-center text-danger'>No field can be blank</p>'`);
+        } else {
+
         }
 
     })

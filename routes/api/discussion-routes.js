@@ -25,6 +25,7 @@ router.get("/:id", async (req, res) => {
 
 router.post("/", async (req, res) => {
   try {
+    
     const createDiscussion = await Discussions.create(req.body);
     if (!createDiscussion) {
       res.status(404).json({ message: "cannot creat discussion" });
