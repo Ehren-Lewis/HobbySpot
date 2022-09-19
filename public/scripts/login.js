@@ -14,6 +14,11 @@ $(document).ready( () => {
         loginForm.toggle();
         }
     });
+
+    $(".home").on('click', (e) => {
+        e.preventDefault();
+        window.location.replace("/home")
+    })
     
     signupButton.on("click", () => {
         if(loginForm.is(":visible") ) {

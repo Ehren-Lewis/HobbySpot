@@ -14,3 +14,7 @@
 .add-discussion-form {
     display: none;
 }
+
+.status-form {
+    all: unset;
+}
