@@ -1,6 +1,8 @@
 
 
     <main class="container">
+
+        {{#if loggedIn}}
         <div class="row">
             <div class="col">
                 <button class="btn btn-outline-warning add-button">Add Discussion</button>
@@ -72,6 +74,21 @@
         </div>
 
     {{/each}}
+
+    {{else}}
+
+    <div class="row">
+        <div class="col-8 mx-auto">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title discussion-title">Please Login to view the disucssions</h5>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    {{/if}}
 
     <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js" integrity="sha256-xLD7nhI62fcsEZK2/v8LsBcb4lG7dgULkuXoXB/j91c=" crossorigin="anonymous"></script>
 

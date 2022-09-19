@@ -1,8 +1,25 @@
+
 $(document).ready( () => {
 
     const addButton = $(".add-button");
     const addForm = $(".add-discussion-form");
-    const disucssionHandler = $(".discussion-handler")
+    const disucssionHandler = $(".discussion-handler");
+
+    const handler = $(".status-control");
+
+    handler.click( (e) => {
+        e.preventDefault();
+        if (handler.text() == "Log In") {
+            window.location.replace("/");
+        } else {
+            $.ajax({
+                url: "/api/users/logout",
+                method: "POST"
+            }).then( val => {
+                window.location.replace("/")
+            })
+        }
+    })
 
     addButton.click( () => {
         addButton.text("Cancel");

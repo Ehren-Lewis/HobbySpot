@@ -22,7 +22,7 @@ router.get("/", async (req, res, next) => {
         res.render("error");
         return;
         }
-        res.render("index", { newData });
+        res.render("index", { newData, user: req.session.username, loggedIn: req.session.loggedIn});
     }
     catch (err) {
         res.render("error")

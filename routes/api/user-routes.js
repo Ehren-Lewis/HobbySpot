@@ -117,9 +117,8 @@ router.delete("/:id", async (req, res) => {
 });
 
 
-router.delete("/logout", async (req, res) => {
+router.post("/logout", async (req, res) => {
   req.session.destroy( () => {
-
   res.redirect('/');
   });
 })
