@@ -1,16 +1,23 @@
+
 const express = require("express");
 const exphbs = require("express-handlebars");
-const routes = require("./routes");
+
+const routes = require("./controllers");
+
 const path = require("path");
+
 const sessions = require("express-session");
+
 const dotenv = require("dotenv").config();
+
 const SequelizeStore = require("connect-session-sequelize")(sessions.Store);
 const sequelize = require("./config/connection.js");
+
 const app = express();
 const PORT = process.env.PORT || 3001;
-console.log("Hi");
+
 const sess = {
-  secret: "something",
+  secret: process.env.KEY,
   resave: false,
   saveUninitialized: true,
   cookie: {
@@ -23,8 +30,6 @@ const sess = {
 
 app.use(sessions(sess));
 
-// import sequelize connection
-// const { Session } = require("inspector");
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
@@ -50,10 +55,6 @@ app.engine(
 app.set("view engine", "handlebars");
 
 //cookies setup
-
-// const SequelizeStore = require("connect-session-sequelize")(session.Store);
-
-// sync sequelize models to the database, then turn on the server
 
 sequelize.sync({ force: false }).then(() => {
   app.listen(PORT, () => {

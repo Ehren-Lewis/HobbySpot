@@ -1,4 +1,4 @@
-require("dotenv").config();
+// require("dotenv").config();
 
 $(document).ready( () => {
 
@@ -18,6 +18,7 @@ $(document).ready( () => {
 				getWeather(city);
 			}
 			getWeather("Chicago");
+            $("#currentCity").addClass("d-none")
 		}
 	);
 
@@ -76,12 +77,14 @@ $(document).ready( () => {
     })
 
     // addForm.
-
-
+//     let id;
+// let target;
+// let options;
 })
-
+// 5f7d81a3e5e751b9ae47b0813dc64954
+// dbd4b78b875c9f3d499f25008225a8e6
 const getLocation = (lat, lon) => {
-    const url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${process.env.API_KEY}`;
+    const url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=dbd4b78b875c9f3d499f25008225a8e6`;
     $.ajax({
         url: url,
         method: "GET",
@@ -92,19 +95,19 @@ const getLocation = (lat, lon) => {
 
 
 const getWeather = (city)  => {
-    const url = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&units=imperial&appid=${process.env.API_KEY}`;
+    const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=imperial&appid=dbd4b78b875c9f3d499f25008225a8e6`;
     $.ajax({
         url: url,
         method: "GET",
     }).then( (value) => {
-        todayDiv.html("");
-        console.log(response);
-        displayOneDay(response);
+        displayOneDay(value);
     });
 }
 
 const displayOneDay = (value) => {
     const name = value.name;
+
+    $("#currentCity").addClass("border")
     
     // gathering the needed data 
     const temp  = value.main.temp;
