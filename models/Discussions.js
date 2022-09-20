@@ -28,6 +28,11 @@ Discussions.init(
     text_field: {
       type: DataTypes.STRING,
     },
+
+    // username: {
+    //   type: DataTypes.STRING,
+    //   allowNull: false
+    // }
   },
   {
     sequelize,

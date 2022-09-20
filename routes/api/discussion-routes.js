@@ -5,7 +5,7 @@ const { Discussions, Category, User, UserCategory } = require("../../models");
 router.get("/", async (req, res) => {
   try {
     const discussionData = await Discussions.findAll({
-      include: [{model: User}]
+      // include: [{model: User}] 
     });
     if (!discussionData) {
       res.status(404).json({ message: "discussion not found" });
@@ -24,10 +24,27 @@ router.get("/:id", async (req, res) => {
 });
 
 router.post("/", async (req, res) => {
+
   try {
-    
-    const createDiscussion = await Discussions.create(req.body);
-    if (!createDiscussion) {
+
+    const tempUser = await User.findOne({
+      where: {
+        username: req.session.username || req.body.username,
+      }
+    });
+
+    console.log(tempUser);
+
+    // const createDiscussion = await Discussions.create(req.body);
+    console.log(req.session.userId);
+    const createDiscussion = await Discussions.create( {
+      hobby_topic: req.body.hobby_topic,
+      discussion_title: req.body.discussion_title,
+      text_field: req.body.text_field,
+    });
+
+    await tempUser.addDiscussions(createDiscussion);
+    if (!createDiscussion) { 
       res.status(404).json({ message: "cannot creat discussion" });
       return;
     }
@@ -64,5 +81,46 @@ router.delete("/:id", async (req, res) => {
 
   return res.json(discussionDelete);
 });
+ 
+router.get("/user/:id", async (req, res) => {
+  try {
+    const discussionData = await Discussions.findAll({
+      include: [{model: User}],
+      where: {
+        UserId: req.params.id
+      },
+    });
+    if (!discussionData) {
+      res.status(404).json({ message: "discussion not found" });
+      return;
+    }
+    res.status(200).json(discussionData);
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
+router.get("/user/:username", async (req, res) => {
+  try {
+    const discussionData = await Discussions.findAll({
+      include: [{model: User}],
+      where: {
+        username: req.params.username
+      },
+    });
+    if (!discussionData) {
+      res.status(404).json({ message: "discussion not found" });
+      return;
+    }
+    res.status(200).json(discussionData);
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
+
+
+
+
 
 module.exports = router;

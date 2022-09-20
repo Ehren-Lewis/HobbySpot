@@ -6,7 +6,11 @@ const UserCategory = require("./UserCategory");
 const Discussions = require("./Discussions");
 
 Discussions.belongsTo(User);
-User.hasMany(Discussions);
+User.hasMany(Discussions, 
+//   {
+//   foreignKey: "username"
+// }
+);
 
 Category.belongsToMany(User, { through: UserCategory });
 

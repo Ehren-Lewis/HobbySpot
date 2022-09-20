@@ -35,6 +35,11 @@ $(document).ready( () => {
         addForm.toggle();
     })
 
+    // title
+    // category
+    //username from cookies
+    // text info
+
 
     addForm.submit( (e) => {
         e.preventDefault();
@@ -43,6 +48,18 @@ $(document).ready( () => {
         disucssionHandler.append(`<p class='text-center text-danger'>No field can be blank</p>'`);
         } else {
 
+            $.ajax({
+                url: "/api/discussions",
+                method: "POST",
+                data: {
+                    "hobby_topic": $("#hobby").val(),
+                    "discussion_title": $("#title").val(),
+                    "text_field": $("#discussion").val(),
+                    "UserId":6
+                }
+            }).then( (val ) => {
+                location.reload();      
+            });
         }
 
     })
