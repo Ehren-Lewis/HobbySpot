@@ -19,7 +19,7 @@ router.get("/", async (req, res, next) => {
         res.render("search", { newData, user: req.session.username, loggedIn: req.session.loggedIn});
     }
     catch (err) {
-        res.render("error");
+        res.render("err or");
     }
 });
 

@@ -5,6 +5,10 @@
     --rosewood: rgb(94, 11, 21);
 }
 
+body {
+    background-color: rgb(255, 243, 228);
+}
+
 
 .one-disucssion {
     margin-top: 15px;

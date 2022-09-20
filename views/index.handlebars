@@ -2,12 +2,10 @@
 
     <main class="container">
 
-
-
         {{#if loggedIn}}
 
             <div class="row">
-        <div class="col-12 mt-5" style="min-height: 150px" id="currentCity"> 
+        <div class="col-8 mt-5 mx-auto border-success shadow bg-light" style="min-height: 150px" id="currentCity"> 
             <div class="row text-center">
                 <div class="col-3 cityName"></div>
                 <div class="col-1 icon"></div>
@@ -25,7 +23,7 @@
     </div>
         <div class="row">
             <div class="col mx-auto d-flex justify-content-center">
-                <button class="btn btn-outline-warning add-button mx-auto my-3">Add Discussion</button>
+                <button class="btn btn-success add-button mx-auto my-3">Add Discussion</button>
             </div>
         </div>
 
@@ -34,20 +32,19 @@
             </div>
         </div>
 
-
         <div class="row">
             <div class="col-8 mx-auto">
-            <form class="border mx-auto add-discussion-form" style="min-height: 0px">
+            <form class="border mx-auto add-discussion-form bg-light border-warning" style="min-height: 0px">
                 <div class="form-group my-3">
-                    <label for="title">Title: </label>
+                    <label for="title" class="text-success">Title: </label>
                     <input class="form-input w-100" type="text" id="title">
                 </div>
                 <div class="form-group my-3">
-                    <label for="hobby">Hobby: </label>
+                    <label for="hobby" class="text-success">Hobby: </label>
                     <input class="form-input w-100" type="text" id="hobby" />
                 </div>
                 <div class="form-gorup my-3">
-                    <label for="disucssion">Discussion: </label>
+                    <label for="disucssion" class="text-success">Discussion: </label>
                     <textarea id="discussion" class="form-control" row="2"></textarea>
                 </div>
                 <div class="form-group d-flex justify-content-center">
@@ -61,9 +58,9 @@
             <div class="one-disucssion">
                 <div class="row">
                     <div class="col-8 mx-auto">
-                        <div class="card">
+                        <div class="card shadow border-success">
                             <div class="card-body">
-                                <h5 class="card-title discussion-title">Bees SUCK!</h5>
+                                <h5 class="card-title discussion-title text-success">Bees SUCK!</h5>
                                 <h6 class="card-subtitle mb-2 text-muted">Beeluvr8</h6>
                                 <p class="card-text">According to all known laws of aviation, there is no way a bee should be able to fly. It's wings are too small to get its fat little body off the ground. The bee, of course, flies anyway, because bees don't care what humans think is impossible.</p>
                             </div>
@@ -78,9 +75,9 @@
         <div class="one-disucssion">
             <div class="row">
                 <div class="col-8 mx-auto">
-                    <div class="card">
+                    <div class="card shadow border-success">
                         <div class="card-body">
-                            <h5 class="card-title discussion-title">{{data.discussion_title}}</h5>
+                            <h5 class="card-title discussion-title text-success">{{data.discussion_title}}</h5>
                             <h6 class="card-subtitle mb-2 text-muted">{{data.hobby_topic}}</h6>
                             <h6 class="card-subtitle mb-2 text-muted">{{data.User.username}}</h6>
                             <h6 class="card-subtitle mb-2 text-muted">{{format_time data.createdAt}}</h6>
