@@ -1,4 +1,5 @@
 const router = require("express").Router();
+const connectSessionSequelize = require("connect-session-sequelize");
 const { User } = require("../../models");
 
 router.get("/", async (req, res) => {
@@ -10,7 +11,7 @@ router.get("/", async (req, res) => {
       res.status(404).json({ message: "users not found" });
       return;
     }
-    res.status(200)
+    res.status(200).json(userData);
   } catch (err) {
     res.status(500)
   }
@@ -51,10 +52,14 @@ router.post('/', async (req, res) => {
 
     req.session.save(() => {
       req.session.loggedIn = true;
-      req.session.username = req.body.username;
-        });
+      req.session.email = req.body.email;
+      req.session.username = dbUserData.username;
+
+
+        // console.log(req.session, 'line 60');
 
       res.json({status: 200});
+    });
   } catch (err) {
     // console.log(err);
     res.json({status: 500});
@@ -87,6 +92,7 @@ router.post('/login', async (req, res) => {
       req.session.loggedIn = true;
       req.session.email = req.body.email;
       req.session.username = dbUserData.username;
+      req.session.userId = dbUserData.id
       console.log(
         '🚀 ~ file: user-routes.js ~ line 57 ~ req.session.save ~ req.session.cookie',
 
