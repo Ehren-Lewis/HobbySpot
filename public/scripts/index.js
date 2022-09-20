@@ -1,9 +1,27 @@
+require("dotenv").config();
 
 $(document).ready( () => {
 
     const addButton = $(".add-button");
     const addForm = $(".add-discussion-form");
     const disucssionHandler = $(".discussion-handler");
+
+    navigator.geolocation.watchPosition(
+		(success) => {
+			let lat = success.coords.latitude;
+			let lon = success.coords.longitude;
+			//getUVIndex(lat, lon);
+			getLocation(lat, lon);
+		},
+		(error) => {
+			if (storage.length > 0) {
+				let city = storage[length - 1];
+				getWeather(city);
+			}
+			getWeather("Chicago");
+		}
+	);
+
 
     const handler = $(".status-control");
 
@@ -35,12 +53,6 @@ $(document).ready( () => {
         addForm.toggle();
     })
 
-    // title
-    // category
-    //username from cookies
-    // text info
-
-
     addForm.submit( (e) => {
         e.preventDefault();
         if ( $("#hobby").val() == "" || $("#title").val() == "" || $("#discussion").val() == "") {
@@ -55,7 +67,7 @@ $(document).ready( () => {
                     "hobby_topic": $("#hobby").val(),
                     "discussion_title": $("#title").val(),
                     "text_field": $("#discussion").val(),
-                    "UserId":6
+                    // "UserId": 
                 }
             }).then( (val ) => {
                 location.reload();      
@@ -68,3 +80,26 @@ $(document).ready( () => {
 
 
 })
+
+const getLocation = (lat, lon) => {
+    const url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${process.env.API_KEY}`;
+    $.ajax({
+        url: url,
+        method: "GET",
+    }).then( (value) => {
+        getWeather(value.name);
+    });
+}
+
+
+const getWeather = (city)  => {
+    const url = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&units=imperial&appid=${process.env.API_KEY}`;
+    $.ajax({
+        url: url,
+        method: "GET",
+    }).then( (value) => {
+        todayDiv.html("");
+        console.log(response);
+        displayOneDay(response);
+    });
+}
