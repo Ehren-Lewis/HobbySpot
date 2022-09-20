@@ -18,6 +18,7 @@ $(document).ready( () => {
 				getWeather(city);
 			}
 			getWeather("Chicago");
+            $("#currentCity").addClass("d-none")
 		}
 	);
 
@@ -99,13 +100,14 @@ const getWeather = (city)  => {
         url: url,
         method: "GET",
     }).then( (value) => {
-        console.log(value);
         displayOneDay(value);
     });
 }
 
 const displayOneDay = (value) => {
     const name = value.name;
+
+    $("#currentCity").addClass("border")
     
     // gathering the needed data 
     const temp  = value.main.temp;
