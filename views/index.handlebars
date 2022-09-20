@@ -2,6 +2,24 @@
 
     <main class="container">
 
+    <div class="row">
+        <div class="col-12 mt-5 border" style="min-height: 150px" id="currentCity"> 
+            <div class="row">
+                <div class="col-3 cityName"></div>
+                <div class="col-1 icon"></div>
+            </div>
+            <div class="row">
+                <div class="col temperature"></div>
+            </div>
+            <div class="row">
+                <div class="col windSpeed"></div>
+            </div>
+            <div class="row">
+                <div class="col humidity"></div>
+            </div>
+        </div>
+    </div>
+
         {{#if loggedIn}}
         <div class="row">
             <div class="col mx-auto d-flex justify-content-center">

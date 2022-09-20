@@ -10,7 +10,6 @@ $(document).ready( () => {
 		(success) => {
 			let lat = success.coords.latitude;
 			let lon = success.coords.longitude;
-			//getUVIndex(lat, lon);
 			getLocation(lat, lon);
 		},
 		(error) => {
@@ -102,4 +101,32 @@ const getWeather = (city)  => {
         console.log(response);
         displayOneDay(response);
     });
+}
+
+const displayOneDay = (value) => {
+    const name = value.name;
+    
+    // gathering the needed data 
+    const temp  = value.main.temp;
+    const humidity = value.main.humidity;
+    const windSpeed = value.wind.speed;
+    const visibility = value.weather[0].main;
+    const description = value.weather[0].description;
+    const icon = value.weather[0].icon;
+    const weatherImg = $(`<img src="https://openweathermap.org/img/wn/${icon}.png">`);
+
+    $("#forecast").text(weatherImg);
+    $(".cityName").text(name);
+
+    // If there is any present information, remove anything that was appended 
+    if ( $(".icon").children().length > 0) {
+        $(".icon").empty();
+        $(".UV").empty();
+    }
+
+    // Using .text overwrites, no need to remove the children 
+    $(".icon").append(weatherImg);
+    $(".temperature").text(`Temperature: ${temp}\u00B0F`);
+    $(".windSpeed").text(`Wind speed: ${windSpeed} MPH`);
+    $(".humidity").text(`Humidity: ${humidity} %`);
 }
