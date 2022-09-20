@@ -1,24 +1,49 @@
-# Hobby Spot
+# **Hobby Spot**
 
-## Description
+## **Table of Contents**
 
-Hobby Spot is a full stack discussion forum application. Users are able to create an account and can then log in using their account information to view posts.
+### [App Description](#description)
 
-![screenshot of deployed application](ADD_IMAGE_URL_HERE)
+### [App Usage](#usage)
 
-## Technologies Used
+### [Technologies Used in App](#technologies-used)
 
-[bcrypt](https://www.npmjs.com/package/bcrypt)  
-[dotenv](https://www.npmjs.com/package/dotenv)  
-[express](https://www.npmjs.com/package/express)  
-[MySQL2](https://www.npmjs.com/package/mysql2)  
-[Sequelize](https://www.npmjs.com/package/sequelize)  
-[nodemon](https://www.npmjs.com/package/nodemon)
+### [App Contributors](#contributors)
 
-## Links
+### [App Links](#links)
+
+## **Description**
+
+### Hobby Spot is a full stack discussion forum application. Users are able to create an account, login, and use those credentials to view and create posts.
+
+<img src="./assets/sitepic.png" alt="screenshot of deployed application" width="800"/>
+
+## **Usage**
+
+### The usage for this app is to connect with other people who have similar hobbies as you through a forum based community.
+
+## **Technologies Used**
+
+- [bcrypt](https://www.npmjs.com/package/bcrypt)
+- [dotenv](https://www.npmjs.com/package/dotenv)
+- [express](https://www.npmjs.com/package/express)
+- [MySQL2](https://www.npmjs.com/package/mysql2)
+- [Sequelize](https://www.npmjs.com/package/sequelize)
+- [nodemon](https://www.npmjs.com/package/nodemon)
+
+## **Contributors**
+
+- [Ehren Lewis](https://github.com/Ehren-Lewis)
+- [Sarah Thevenot](https://github.com/SThevenot)
+- [Vian Charbonneau](https://github.com/vianvianc)
+- [Conner Martin](https://github.com/ConnerMart)
+- [Carl Sundheim](https://github.com/csundheimjr)
+- [Trystan Button](https://github.com/trystan333)
+
+## **Links**
 
 [GitHub Repo](https://github.com/Ehren-Lewis/HobbySpot)  
- [Heroku Deploy](https://damp-reaches-02576.herokuapp.com/)
+[Heroku Deploy](https://damp-reaches-02576.herokuapp.com/)
 
 <!-- This is full stack blog application that will focus on:
 
