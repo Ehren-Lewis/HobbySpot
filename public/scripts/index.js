@@ -1,4 +1,4 @@
-require("dotenv").config();
+// require("dotenv").config();
 
 $(document).ready( () => {
 
@@ -76,12 +76,13 @@ $(document).ready( () => {
     })
 
     // addForm.
-
-
+//     let id;
+// let target;
+// let options;
 })
 
 const getLocation = (lat, lon) => {
-    const url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${process.env.API_KEY}`;
+    const url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=dbd4b78b875c9f3d499f25008225a8e6`;
     $.ajax({
         url: url,
         method: "GET",
@@ -92,14 +93,13 @@ const getLocation = (lat, lon) => {
 
 
 const getWeather = (city)  => {
-    const url = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&units=imperial&appid=${process.env.API_KEY}`;
+    const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=imperial&appid=dbd4b78b875c9f3d499f25008225a8e6`;
     $.ajax({
         url: url,
         method: "GET",
     }).then( (value) => {
-        todayDiv.html("");
-        console.log(response);
-        displayOneDay(response);
+        console.log(value);
+        displayOneDay(value);
     });
 }
 
