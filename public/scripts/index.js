@@ -80,7 +80,8 @@ $(document).ready( () => {
 // let target;
 // let options;
 })
-
+// 5f7d81a3e5e751b9ae47b0813dc64954
+// dbd4b78b875c9f3d499f25008225a8e6
 const getLocation = (lat, lon) => {
     const url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=dbd4b78b875c9f3d499f25008225a8e6`;
     $.ajax({
