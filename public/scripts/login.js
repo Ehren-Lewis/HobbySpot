@@ -48,7 +48,7 @@ $(document).ready( () => {
         }).then( val => {
             if (val.status == 200) {
             console.log('SIGNED IN', val.status);
-            document.location.replace("/home");
+            window.location.replace("/home");
             } else if ( val.status == 500 ) {
                 responseCol.empty()
                 responseCol.append(`<p class='text-center text-danger'>There was an issue in registering, please try again</p>'`);
