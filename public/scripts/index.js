@@ -83,6 +83,23 @@ $(document).ready( () => {
 })
 // 5f7d81a3e5e751b9ae47b0813dc64954
 // dbd4b78b875c9f3d499f25008225a8e6
+
+navigator.geolocation.watchPosition(
+    (success) => {
+        let lat = success.coords.latitude;
+        let lon = success.coords.longitude;
+        getLocation(lat, lon);
+    },
+    (error) => {
+        if (storage.length > 0) {
+            let city = storage[length - 1];
+            getWeather(city);
+        }
+        getWeather("Chicago");
+        $("#currentCity").addClass("d-none")
+    }
+);
+
 const getLocation = (lat, lon) => {
     const url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=dbd4b78b875c9f3d499f25008225a8e6`;
     $.ajax({

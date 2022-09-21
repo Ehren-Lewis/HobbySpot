@@ -1,11 +1,34 @@
 # Hobby Spot
 
-## Description
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-Hobby Spot is a full stack discussion forum application. Users are able to create an account and can then log in using their account information to view posts.
+Author: Carl Sundheim Jr., Connor Martin, Ehren Lewis, Sarah Thevenot, Trystan Button, and Vian Charbonneau
 
-![screenshot of deployed application](ADD_IMAGE_URL_HERE)
+## Table Of Contents
 
+
+* [About This Project](#about-this-project)
+* [How to Install](#how-to-install)
+* [Usage](#usage)
+* [Known Issues](#known-issues)
+* [Questions](#questions)
+* [License](#license)
+* [Contributing](#contributing)
+
+
+## About This Project
+
+Hobby Spot is a full stack discussion forum application. Users are able to create an account
+ and can then log in using their account information to view posts.
+
+Ourmotivation behind this is as individuals who are very diverse in their interests, we all wanted an application that would allow
+us to explore different hobbies, as well as share our own with other people.
+
+ Some of the challenges faced during creation was connecting the frontend and backend, making sure the git process flow went smoothly,
+ making sure authentification and routes didn't leak any user data, as well as setting up connections between models.
+
+ Future goals for this project include adding a dynamic search bar to allow users to view a page based solely on a single discussion,
+ add more authentification on the login system, add a profile page, and to add the ability to comment on posts.
 ## Technologies Used
 
 [bcrypt](https://www.npmjs.com/package/bcrypt)  
@@ -15,93 +38,65 @@ Hobby Spot is a full stack discussion forum application. Users are able to creat
 [Sequelize](https://www.npmjs.com/package/sequelize)  
 [nodemon](https://www.npmjs.com/package/nodemon)
 
+
+## How to Install
+
+
+    1. Navigate to the code repository
+    2. Press the green code button, located near the about section
+    3. Copy either the HTTPS, Git CLI, download the zip, open with GitHub desktop, or copy the SSH link.
+    4. Depending on download method, use Git, executable, or the desktop application to open the content files.
+    5. All of the content of the repository will be available after completion of the previous state.
+    
 ## Links
 
 [GitHub Repo](https://github.com/Ehren-Lewis/HobbySpot)  
  [Heroku Deploy](https://damp-reaches-02576.herokuapp.com/)
 
-<!-- This is full stack blog application that will focus on:
+## Usage
 
-1. Allowing users to create a login
-2.
+ To use this project, head over to the deployed link on heroku provided. Create an account or login, then you can view the application and create
+ new discussions
 
-# 3 databases
 
-1.  schema.sql
-    This database is used for initializing information such as blog topics, blog posts
-2.  users.sql
-    This database is used for login and user authentification
-3.  userInfo.sql
-    This database is used for storing information about what groups the user has joined, as well as preferences
+ ![Image of the landing page](./assets/images/hobbySpotLogin.png)
+ ![Image of the index page](./assets/images/hobbySpotLanding.png)
+ ![Image of adding a discussion](./assets/images/hobbySpotAdd.png)
 
-users.sql
 
-userId: {
-type: integer
 
-    probably UUID, it's more secure I think
+## Known Issues
 
-}
+Currently, refreshing the page in the middle of creating a new dicussion will delete it and you would have to start it over again.
+The search bar is not fully functional, any searches won't redirect to any page based on input.
 
-blog posts need a timestamp. This will allow for chronological information presentation
 
-preferences.sql. This could be a through table
-or.
+## License
 
-User.hasMany(hobbies);
-Hobbies.belongsTo(User)
 
-On home page:
+MIT License
 
-SELECT preferences FROM User where User.userName = ${loginUsername}
+Copyright (c) 2022 [Ehren Lewis]
 
-If this is created dynamically, it may be best to have every databse (OR table)
-be a different hobby, it's whatever choice. Probably table
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
 
-USE DATABASE hobbies;
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
 
-CREATE TABLE vidoe_games_posts (
-psot_numb: INT,
-img: img_value (Im not sure how images will work),
-user_who_created: VARCHAR(30) (whoever created it),
-text_value: string (whatever info they've put),
-)
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
 
-(Every other created table will follow this format essentially)
 
-SELECT TABLE_NAME
-FROM INFORMATION_SCHEMA.TABLES
-WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_SCHEMA='dbName'
+## Contributing
 
-should get all system table names;
-
-Then:
-const som_placeholder = [];
-for (i in User.preferences) {
-some_placeholder.push(db.query('SELECT \* FROM ${preferences[i]})) (THIS CODE WILL NOT WORK SINCE MYSQL IS ASYNC)
-}
-
-then:
-sort(someplace_holder by time closest to now);
-send data to handlebars.
-dynamically render the elements returned;
-
-This should work for the user homepage.
-IF you remove the user step and just do SELECT \* FROM url/params/pageName;
-You can do link 72 and below for every individual page.
-
-the only delete functionality I think of right now won't be with deleting users.
-thats separate url handling to do that
-
-deleting and adding and updating would be through the hobbies people subscribe to;
-If doing a put:
-
-First get user.
-Then get all user information on preferences.
-Since it's a put, append it to current user preference.
-Then save
-
-IF delete:
-find the preference.name that matches the table name;
-delete
-save. -->
+To contribute on this project, contact us through my Github or via email.
