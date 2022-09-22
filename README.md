@@ -48,6 +48,14 @@ us to explore different hobbies, as well as share our own with other people.
     4. Depending on download method, use Git, executable, or the desktop application to open the content files.
     5. All of the content of the repository will be available after completion of the previous state.
     
+## Contributors
+
+- [Ehren Lewis](https://github.com/Ehren-Lewis)
+- [Sarah Thevenot](https://github.com/SThevenot)
+- [Vian Charbonneau](https://github.com/vianvianc)
+- [Conner Martin](https://github.com/ConnerMart)
+- [Carl Sundheim](https://github.com/csundheimjr)
+- [Trystan Button](https://github.com/trystan333)
 ## Links
 
 [GitHub Repo](https://github.com/Ehren-Lewis/HobbySpot)  
@@ -100,3 +108,5 @@ SOFTWARE.
 ## Contributing
 
 To contribute on this project, contact us through my Github or via email.
+
+
